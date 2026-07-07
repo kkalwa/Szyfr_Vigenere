@@ -1,4 +1,7 @@
 ﻿using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,13 +18,23 @@ namespace Szyfr_Vigenere
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public MainWindow()
         {
             InitializeComponent();
+            CharactersCollection.Add("A");
         }
-
-        public ObservableCollection<char> CharactersCollection { get; } = [];
+        public event PropertyChangedEventHandler? PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        private ObservableCollection<string> charactersCollection = [];
+        public ObservableCollection<string> CharactersCollection
+        {
+            get { return charactersCollection; }
+            set { charactersCollection = value; OnPropertyChanged(); }
+        }
     }
 }
