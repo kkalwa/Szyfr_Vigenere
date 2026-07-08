@@ -23,18 +23,41 @@ namespace Szyfr_Vigenere
         public MainWindow()
         {
             InitializeComponent();
-            CharactersCollection.Add("A");
+            this.DataContext = this;
+            setRowNumbers();
         }
+
+        private void setRowNumbers()
+        {
+            int count = CharactersCollection.Count;
+            RowNumbers.Add("");
+            for(int i=1; i<=count; i++) 
+            { 
+                RowNumbers.Add(i.ToString()); 
+            }
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        private ObservableCollection<string> charactersCollection = [];
-        public ObservableCollection<string> CharactersCollection
+        /*Is the below even close to optimal solution?*/
+        private ObservableCollection<char> charactersCollection = ['A', 'Ą', 'B', 'C', 'Ć', 'D', 'E', 'Ę', 'F',
+                                                                   'G', 'H', 'I', 'J', 'K', 'L', 'Ł', 'M', 'N',
+                                                                   'Ń', 'O', 'Ó', 'P', 'R', 'S', 'Ś', 'T', 'U',
+                                                                   'V', 'W', 'X', 'Y', 'Z', 'Ź', 'Ż'];
+        public ObservableCollection<char> CharactersCollection
         {
             get { return charactersCollection; }
             set { charactersCollection = value; OnPropertyChanged(); }
+        }
+
+        private ObservableCollection<string> rowNumbers = [];
+        public ObservableCollection<string> RowNumbers
+        {
+            get { return rowNumbers; }
+            set { rowNumbers = value; OnPropertyChanged(); }
         }
     }
 }

@@ -5,12 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Szyfr_Vigenere"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Vigenere" Height="auto" Width="auto">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="1" ItemsControl.ItemsSource="{Binding CharactersCollection}"/>
+        <Grid.Resources>
+            <Style x:Key="HorizontalListView" TargetType="ListView">
+                <Setter Property="ItemsPanel">
+                    <Setter.Value>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+
+        <ListView Grid.Column="1" 
+          ItemsControl.ItemsSource="{Binding RowNumbers}">
+        </ListView>
+
+        <ListView Grid.Column="2" 
+                  ItemsControl.ItemsSource="{Binding CharactersCollection}"
+                  Style="{StaticResource HorizontalListView}">
+        </ListView>
+
+
     </Grid>
 </Window>
