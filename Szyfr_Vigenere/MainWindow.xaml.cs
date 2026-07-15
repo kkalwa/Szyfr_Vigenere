@@ -33,7 +33,7 @@ namespace Szyfr_Vigenere
             RowNumbers.Add("");
             for(int i=1; i<=count; i++) 
             { 
-                RowNumbers.Add(i.ToString()); 
+                RowNumbers.Add(i.ToString() +"."); 
             }
         }
 
@@ -42,6 +42,7 @@ namespace Szyfr_Vigenere
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        
         /*Is the below even close to optimal solution?*/
         private ObservableCollection<char> charactersCollection = ['A', 'Ą', 'B', 'C', 'Ć', 'D', 'E', 'Ę', 'F',
                                                                    'G', 'H', 'I', 'J', 'K', 'L', 'Ł', 'M', 'N',

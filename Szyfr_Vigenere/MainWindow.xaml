@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Szyfr_Vigenere"
         mc:Ignorable="d"
-        Title="Vigenere" Height="auto" Width="auto">
+        Title="Vigenere" Height="auto" Width="auto" WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -24,12 +24,12 @@
             </Style>
         </Grid.Resources>
 
-        <ListView Grid.Column="1" 
-          ItemsControl.ItemsSource="{Binding RowNumbers}">
+        <ListView Grid.Column="1"
+          ItemsSource="{Binding RowNumbers}">
         </ListView>
 
-        <ListView Grid.Column="2" 
-                  ItemsControl.ItemsSource="{Binding CharactersCollection}"
+        <ListView Grid.Column="2"
+                  ItemsSource="{Binding CharactersCollection}"
                   Style="{StaticResource HorizontalListView}">
         </ListView>
 
