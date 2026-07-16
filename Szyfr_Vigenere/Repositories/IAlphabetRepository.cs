@@ -4,7 +4,11 @@ using System.Text;
 
 namespace Szyfr_Vigenere.Repositories
 {
-    internal interface IAlphabetRepository
+    public interface IAlphabetRepository
     {
+        public int Count { get; }
+        public void MoveRight(uint n);
+        public void MoveLeft(uint n);
+        public string GetElement(uint n);
     }
 }
