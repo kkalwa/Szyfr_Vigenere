@@ -15,27 +15,6 @@ namespace Szyfr_Vigenere.Alphabets
             "Ó", "P", "Q", "R", "S", "Ś", "T", "U", "V", "W",
             "X", "Y", "Z", "Ź", "Ż"
         ])
-        {
-        }
-        public int Count => alphabet.Count;
-
-        public string GetElement(uint n)
-        {
-            if(n >= alphabet.Count)
-            {
-                throw new ArgumentOutOfRangeException(nameof(n));
-            }
-            return alphabet[(int)n];
-        }
-
-        public void MoveLeft(uint n)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void MoveRight(uint n)
-        {
-            alphabet.Select
-        }
+        {}
     }
 }
