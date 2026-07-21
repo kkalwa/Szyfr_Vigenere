@@ -8,10 +8,16 @@
         Title="Vigenere" Height="auto" Width="auto" WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="350"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
         <Grid.Resources>
             <Style x:Key="HorizontalListView" TargetType="ListView">
                 <Setter Property="ItemsPanel">
@@ -24,8 +30,27 @@
             </Style>
         </Grid.Resources>
 
+        <StackPanel Grid.Column="0"
+                    Grid.Row="1">
+            <TextBlock Text="Wiadomość do zaszyfrowania:"/>
+            <TextBox Height="100"
+                     Width="250"
+                     TextWrapping="Wrap"
+                     Text="{Binding TextToEncrypt, UpdateSourceTrigger=PropertyChanged}">
+            </TextBox>
+            <TextBlock Text="Klucz:"/>
+            <TextBox Width="250"
+                     Text="{Binding KeyText, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="Szyfrogram:"/>
+            <TextBlock Width="250"
+                     Height="100"
+                       TextWrapping="Wrap"
+                     Text="{Binding EncryptedText}"/>
+        </StackPanel>
+        
         <ListView Grid.Column="1"
-          ItemsSource="{Binding RowNumbers}">
+                  Grid.Row="1"
+                  ItemsSource="{Binding RowNumbers}">
         </ListView>
 
         <ListView Grid.Column="2"
@@ -33,6 +58,22 @@
                   Style="{StaticResource HorizontalListView}">
         </ListView>
 
+        <ListView Grid.Column="2"
+                  Grid.Row="1"
+                  ItemsSource="{Binding RowCollections}"
+                  FontSize="7">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ListView ItemsSource="{Binding}" Style="{StaticResource HorizontalListView}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
     </Grid>
 </Window>

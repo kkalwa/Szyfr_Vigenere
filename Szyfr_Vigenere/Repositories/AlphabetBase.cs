@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Szyfr_Vigenere.Repositories
 {
-    public class AlphabetBase
+    public abstract class AlphabetBase
     {
         protected List<string> alphabet;
         public AlphabetBase(List<string> alphabet)
@@ -22,6 +22,16 @@ namespace Szyfr_Vigenere.Repositories
                 throw new ArgumentOutOfRangeException(nameof(n));
             }
             return alphabet[(int)n];
+        }
+
+        public uint GetIndexOf(string value)
+        {
+            int index = alphabet.IndexOf(value);
+            if (index == -1)
+            {
+                throw new ArgumentException($"Value '{value}' not found in the alphabet.");
+            }
+            return (uint)index;
         }
         public void MoveLeft(uint n)
         {
@@ -53,7 +63,6 @@ namespace Szyfr_Vigenere.Repositories
 
             }
         }
-
         public void SaveItemsTo(Collection<string> target)
         {
             target.Clear();
@@ -62,5 +71,8 @@ namespace Szyfr_Vigenere.Repositories
                 target.Add(item);
             }
         }
+        public abstract void Rewind();
+
+
     }
 }

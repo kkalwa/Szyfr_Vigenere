@@ -10,5 +10,7 @@ namespace Szyfr_Vigenere.Repositories
         public void MoveRight(uint n);
         public void MoveLeft(uint n);
         public string GetElement(uint n);
+        public uint GetIndexOf(string value);
+
     }
 }

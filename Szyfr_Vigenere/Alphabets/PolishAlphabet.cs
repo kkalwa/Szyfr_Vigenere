@@ -16,5 +16,17 @@ namespace Szyfr_Vigenere.Alphabets
             "X", "Y", "Z", "Ź", "Ż"
         ])
         {}
+
+        override public void Rewind()
+        {
+            // Reset the alphabet to its original order
+            alphabet = new List<string>
+            {
+                "A", "Ą", "B", "C", "Ć", "D", "E", "Ę", "F", "G",
+                "H", "I", "J", "K", "L", "Ł", "M", "N", "Ń", "O",
+                "Ó", "P", "Q", "R", "S", "Ś", "T", "U", "V", "W",
+                "X", "Y", "Z", "Ź", "Ż"
+            };
+        }
     }
 }
